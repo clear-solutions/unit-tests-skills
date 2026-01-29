@@ -15,7 +15,7 @@ Skills for generating unit tests with consistent quality. Two-step process: anal
 
 ## Rules Location
 
-All testing rules are in `.claude/rules/tests/`:
+All testing rules are in `skills/rules/tests/`:
 
 - `general/` — applies to all languages
 - `java/unit/` — Java-specific (JUnit 5, Mockito)
@@ -23,7 +23,7 @@ All testing rules are in `.claude/rules/tests/`:
 
 ## When Generating Tests
 
-1. Read rules from `.claude/rules/tests/general/`
+1. Read rules from `skills/rules/tests/general/`
 2. If Java — also read `java/unit/` rules
 3. Apply INCLUDE/EXCLUDE criteria from `test-case-generation-strategy.md`
 4. Follow naming format: `{method}_{state}_{outcome}`
@@ -63,7 +63,7 @@ What this skill does.
 
 ## Rules Reference
 
-List rule files this skill reads from `.claude/rules/tests/`.
+List rule files this skill reads from `skills/rules/tests/`.
 
 ## Instructions
 
@@ -80,7 +80,7 @@ Steps:
 ### Directory Structure
 
 ```
-.claude/rules/tests/
+skills/rules/tests/
   general/              # Language-agnostic rules
     {rule-name}.md
   {language}/unit/      # Language-specific unit test rules

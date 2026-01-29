@@ -5,7 +5,7 @@ A collection of AI agent skills for generating high-quality unit tests. These sk
 ## Installation
 
 ```bash
-add clear-solutions/unit-tests-skills
+npx skills add clear-solutions/unit-tests-skills
 ```
 
 Or install specific skills:
@@ -83,17 +83,15 @@ These skills enforce proven testing practices:
 ## Project Structure
 
 ```
-skills/                            # For npx skills distribution
+skills/
 ├── generate-test-cases/
 │   └── SKILL.md
-└── generate-tests/
-    └── SKILL.md
-.claude/
-├── skills -> ../skills            # Symlink for Claude compatibility
+├── generate-tests/
+│   └── SKILL.md
 └── rules/tests/
-    ├── general/                   # Language-agnostic rules
-    ├── java/unit/                 # Java-specific rules
-    └── post-generation/           # Compilation verification
+    ├── general/
+    ├── java/unit/
+    └── post-generation/
 ```
 
 ## Test Case Generation Strategy

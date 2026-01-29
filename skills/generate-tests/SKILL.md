@@ -29,7 +29,7 @@ You MUST invoke `/generate-test-cases` NOW before proceeding. Do NOT skip this s
 
 ## Rules Reference
 
-**CRITICAL: You MUST read and apply all relevant rules from the `.claude/rules/tests/` directory:**
+**CRITICAL: You MUST read and apply all relevant rules from the `../rules/tests/` directory:**
 
 ### General Rules (Always Apply)
 - `general/test-case-generation-strategy.md` - INCLUDE/EXCLUDE criteria
@@ -65,7 +65,7 @@ When this command is invoked, generate tests for the specified target:
 
 **Steps:**
 1. **VERIFY test cases exist** - If `/generate-test-cases` was NOT run, STOP and run it first
-2. **Read the relevant rules** from `.claude/rules/tests/` based on code type
+2. **Read the relevant rules** from `../rules/tests/` based on code type
 3. Read the source file/class/method specified above
 4. Analyze the code to determine the type (controller, service, repository, messaging, etc.)
 5. Apply the appropriate rules from the rules directory
