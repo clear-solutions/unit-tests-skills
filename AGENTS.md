@@ -15,23 +15,10 @@ Skills for generating unit tests with consistent quality. Two-step process: anal
 
 ## Rules Location
 
-All testing rules are in `skills/rules/tests/`:
+Rules are inside each skill folder:
 
-- `general/` — applies to all languages
-- `java/unit/` — Java-specific (JUnit 5, Mockito)
-- `post-generation/` — compilation verification
-
-## When Generating Tests
-
-1. Read rules from `skills/rules/tests/general/`
-2. If Java — also read `java/unit/` rules
-3. Apply INCLUDE/EXCLUDE criteria from `test-case-generation-strategy.md`
-4. Follow naming format: `{method}_{state}_{outcome}`
-5. Verify tests compile before finishing
-
-## Skills Location
-
-Skills are in `skills/` directory at project root.
+- `generate-test-cases/rules/general/` — general rules only
+- `generate-tests/rules/tests/` — all rules (general, java, post-generation)
 
 ## Creating a New Skill
 
@@ -41,6 +28,7 @@ Skills are in `skills/` directory at project root.
 skills/
   {skill-name}/
     SKILL.md
+    rules/          # Rules used by this skill
 ```
 
 ### Naming Conventions
@@ -63,7 +51,7 @@ What this skill does.
 
 ## Rules Reference
 
-List rule files this skill reads from `skills/rules/tests/`.
+List rule files from `./rules/` directory.
 
 ## Instructions
 
@@ -77,13 +65,13 @@ Steps:
 
 ## Adding a New Rule
 
-### Directory Structure
+Add rules inside the skill folder that uses them:
 
 ```
-skills/rules/tests/
-  general/              # Language-agnostic rules
+skills/{skill-name}/rules/
+  general/
     {rule-name}.md
-  {language}/unit/      # Language-specific unit test rules
+  {language}/unit/
     {rule-name}.md
 ```
 

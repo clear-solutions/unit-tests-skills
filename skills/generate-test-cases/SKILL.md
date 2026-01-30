@@ -17,13 +17,13 @@ You will analyze code and generate a list of test cases that should be written f
 **CRITICAL: You MUST read and apply all rules from the following files before generating test cases:**
 
 ### General Rules (Always Apply)
-- `../rules/tests/general/test-case-generation-strategy.md` - INCLUDE/EXCLUDE criteria for test cases
-- `../rules/tests/general/naming-conventions.md` - Test naming format
-- `../rules/tests/general/general-principles.md` - Core testing principles
-- `../rules/tests/general/what-makes-good-test.md` - Clarity, Completeness, Conciseness, Resilience
-- `../rules/tests/general/keep-tests-focused.md` - One scenario per test
-- `../rules/tests/general/test-behaviors-not-methods.md` - Separate tests for behaviors
-- `../rules/tests/general/prefer-public-apis.md` - Test public APIs over private methods
+- `./rules/general/test-case-generation-strategy.md` - INCLUDE/EXCLUDE criteria for test cases
+- `./rules/general/naming-conventions.md` - Test naming format
+- `./rules/general/general-principles.md` - Core testing principles
+- `./rules/general/what-makes-good-test.md` - Clarity, Completeness, Conciseness, Resilience
+- `./rules/general/keep-tests-focused.md` - One scenario per test
+- `./rules/general/test-behaviors-not-methods.md` - Separate tests for behaviors
+- `./rules/general/prefer-public-apis.md` - Test public APIs over private methods
 
 ---
 
@@ -62,7 +62,7 @@ When this command is invoked, generate test cases for the specified target:
 **Target to analyze:** $ARGUMENTS
 
 **Steps:**
-1. **Read the rules** from `../rules/tests/general/` directory
+1. **Read the rules** from `./rules/general/` directory
 2. Read the source file/class/method specified above
 3. Analyze ALL code branches, including:
    - Success paths

@@ -23,7 +23,7 @@ This approach ensures proper coverage based on INCLUDE/EXCLUDE rules and allows 
 
 ### Test Rules
 
-All rules are in `skills/rules/tests/`. When a skill is invoked, read the relevant rules:
+Rules are inside each skill's `rules/` folder. When a skill is invoked, read the relevant rules:
 
 **General (always apply):**
 - `general/test-case-generation-strategy.md` — INCLUDE/EXCLUDE criteria

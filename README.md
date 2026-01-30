@@ -85,13 +85,14 @@ These skills enforce proven testing practices:
 ```
 skills/
 ├── generate-test-cases/
-│   └── SKILL.md
-├── generate-tests/
-│   └── SKILL.md
-└── rules/tests/
-    ├── general/
-    ├── java/unit/
-    └── post-generation/
+│   ├── SKILL.md
+│   └── rules/general/
+└── generate-tests/
+    ├── SKILL.md
+    └── rules/tests/
+        ├── general/
+        ├── java/unit/
+        └── post-generation/
 ```
 
 ## Test Case Generation Strategy
