@@ -4,6 +4,22 @@ A collection of AI agent skills for generating high-quality unit tests. These sk
 
 ## Installation
 
+### Option 1: Using openskills (Recommended)
+
+[openskills](https://github.com/numman-ali/openskills) automatically generates `AGENTS.md` for maximum AI agent effectiveness.
+
+```bash
+# Install skills
+npx openskills install clear-solutions/unit-tests-skills
+
+# Auto-generate/update AGENTS.md with installed skills
+npx openskills sync
+```
+
+**Why openskills?** According to [Vercel's research](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals), skills alone trigger only 53% of the time. With `AGENTS.md`, success rate jumps to **100%**.
+
+### Option 2: Using npx skills
+
 ```bash
 npx skills add clear-solutions/unit-tests-skills
 ```
@@ -20,6 +36,18 @@ For Claude Code specifically:
 ```bash
 npx skills add clear-solutions/unit-tests-skills -a claude-code
 ```
+
+**Important:** After installing with `npx skills`, manually add the snippet from [`templates/AGENTS-SNIPPET.md`](templates/AGENTS-SNIPPET.md) to your project's `AGENTS.md` file.
+
+## Why AGENTS.md Matters
+
+| Configuration | Success Rate |
+|---------------|--------------|
+| Skills alone | 53% |
+| Skills + prompting | 79% |
+| **AGENTS.md** | **100%** |
+
+`AGENTS.md` provides persistent context to AI agents on every turn, without requiring them to decide to load skills first. See the [full article](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals) for details.
 
 ## Available Skills
 
