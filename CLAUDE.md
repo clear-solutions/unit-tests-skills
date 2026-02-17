@@ -1,54 +1,57 @@
-# Project Guidelines
+# CLAUDE.md
 
-## Test Generation
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-This project provides skills and rules for generating high-quality unit tests. When asked to generate tests, first explore the project structure to understand the codebase, then use the available skills.
+## What This Repo Is
 
-### Recommended Workflow
+A collection of AI agent skills (not a runnable application) for generating high-quality unit tests. Skills are installed into target projects via `npx openskills install` or `npx skills add`. There is no build system, test suite, or application code here — only skill definitions and rule documents.
 
-When generating tests, the two-step approach produces better results:
+## Repository Structure
 
-1. **First:** Run `/generate-test-cases <target>` to analyze code and list test cases
-2. **Review:** Check that test cases cover the important branches
-3. **Then:** Run `/generate-tests <target>` to generate actual test code
+```
+skills/
+  generate-test-cases/    # Skill: analyze code → output test case list
+    SKILL.md              # Skill definition (frontmatter + instructions)
+    rules/general/        # General testing rules
+  generate-tests/         # Skill: generate actual test code from cases
+    SKILL.md
+    rules/tests/
+      general/            # General testing rules (superset of generate-test-cases rules)
+      java/unit/          # Java-specific rules (JUnit 5, Mockito, AssertJ)
+      post-generation/    # Compilation verification rules
+templates/
+  AGENTS-SNIPPET.md       # Template users copy into their project's AGENTS.md
+```
 
-This approach ensures proper coverage based on INCLUDE/EXCLUDE rules and allows reviewing the test strategy before writing code.
+## Available Skills
 
-### Available Skills
+| Command | Purpose |
+|---------|---------|
+| `/generate-test-cases <target>` | Analyze code → output structured test case list (Given-When-Then) |
+| `/generate-tests <target>` | Generate test code from previously generated test cases |
 
-| Skill | Command | Purpose |
-|-------|---------|---------|
-| Generate Test Cases | `/generate-test-cases <target>` | Analyze code → output test case list with Given-When-Then |
-| Generate Tests | `/generate-tests <target>` | Generate test code based on test cases |
+## Workflow
 
-### Test Rules
+The two-step process is **mandatory** — always generate test cases before generating tests:
 
-Rules are inside each skill's `rules/` folder. When a skill is invoked, read the relevant rules:
+1. `/generate-test-cases <target>` — outputs test case list
+2. User reviews test cases
+3. `/generate-tests <target>` — generates test code
 
-**General (always apply):**
-- `general/test-case-generation-strategy.md` — INCLUDE/EXCLUDE criteria
-- `general/naming-conventions.md` — `{method}_{state}_{outcome}` format
-- `general/general-principles.md` — Given-When-Then, actual/expected prefixes
-- `general/what-makes-good-test.md` — Clarity, Completeness, Conciseness, Resilience
-- `general/cleanly-create-test-data.md` — helpers, builders, no default reliance
-- `general/keep-tests-focused.md` — one scenario per test
-- `general/no-logic-in-tests.md` — KISS > DRY, literal values in assertions
+When a user asks to "generate tests", run `/generate-test-cases` first, then ask the user before proceeding to `/generate-tests`.
 
-**Java-specific:**
-- `java/unit/java-test-template.md` — JUnit 5 template, forbidden annotations
-- `java/unit/domain-service-rules.md` — Mockito patterns
-- `java/unit/argument-matching.md` — ArgumentCaptor over any()
+## Rules
 
-**Post-generation:**
-- `post-generation/compilation-verification.md` — verify tests compile
+Each skill's `SKILL.md` lists which rule files it reads. When a skill is invoked, the skill definition instructs the agent to read the rule files from the skill's own `rules/` directory. The `generate-tests` skill has a superset of rules (includes Java-specific and post-generation rules).
 
-### Workflow Details
+Key rule topics:
+- **INCLUDE/EXCLUDE criteria** (`test-case-generation-strategy.md`) — what to test vs. skip
+- **Naming** (`naming-conventions.md`) — `{method}_{state}_{outcome}` format
+- **Structure** (`general-principles.md`) — Given-When-Then, `actual`/`expected` prefixes
+- **Java specifics** — JUnit 5 + Mockito + AssertJ; `@SpringBootTest` is FORBIDDEN in unit tests; use `ArgumentCaptor` over `any()` for DTOs
 
-**When user asks to "generate tests":**
-1. Run `/generate-test-cases` first
-2. After test cases are ready, ask user if they want to proceed with code generation
-3. If yes, run `/generate-tests`
+## Contributing
 
-**When user asks to "generate test cases" only:**
-1. Run `/generate-test-cases`
-2. Stop after outputting the test cases list
+- Place general rules in `rules/general/` (or `rules/tests/general/` for generate-tests)
+- Place language-specific rules in `rules/tests/{language}/unit/`
+- All changes require a PR with CODEOWNER approval; direct pushes to `main` are disabled
