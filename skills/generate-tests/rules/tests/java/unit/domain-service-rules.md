@@ -75,14 +75,17 @@ class OrderServiceTest {
         // Given
         var request = new OrderRequest("product-1", 5);
         var savedOrder = new Order("order-123", "product-1", 5);
-        when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
+        var captor = ArgumentCaptor.forClass(Order.class);
+        when(orderRepository.save(captor.capture())).thenReturn(savedOrder);
 
         // When
         Order actualOrder = orderService.createOrder(request);
 
         // Then
         assertThat(actualOrder.getId()).isEqualTo("order-123");
-        verify(orderRepository).save(any(Order.class));
+        Order capturedOrder = captor.getValue();
+        assertThat(capturedOrder.getProductId()).isEqualTo("product-1");
+        assertThat(capturedOrder.getQuantity()).isEqualTo(5);
     }
 
     @Test
@@ -90,7 +93,7 @@ class OrderServiceTest {
         // Given
         var order = new Order("order-123", "product-1", 5);
         order.setTotal(500.0);
-        when(paymentService.charge(anyString(), anyDouble())).thenReturn(true);
+        when(paymentService.charge("order-123", 500.0)).thenReturn(true);
 
         // When
         boolean actualResult = orderService.processPayment(order);
@@ -104,7 +107,8 @@ class OrderServiceTest {
     void processPayment_paymentFails_throwsPaymentException() {
         // Given
         var order = new Order("order-123", "product-1", 5);
-        when(paymentService.charge(anyString(), anyDouble())).thenReturn(false);
+        order.setTotal(500.0);
+        when(paymentService.charge("order-123", 500.0)).thenReturn(false);
 
         // When-Then
         assertThatThrownBy(() -> orderService.processPayment(order))
@@ -146,8 +150,10 @@ class OrderServiceTest {
 ### Verification Patterns
 
 ```java
-// Verify method was called
-verify(repository).save(any(Order.class));
+// Verify method was called with ArgumentCaptor for model objects
+var captor = ArgumentCaptor.forClass(Order.class);
+verify(repository).save(captor.capture());
+assertThat(captor.getValue().getProductId()).isEqualTo("product-1");
 
 // Verify method was NOT called
 verify(notificationService, never()).send(any());

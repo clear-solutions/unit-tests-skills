@@ -48,7 +48,7 @@ Key rule topics:
 - **INCLUDE/EXCLUDE criteria** (`test-case-generation-strategy.md`) — what to test vs. skip
 - **Naming** (`naming-conventions.md`) — `{method}_{state}_{outcome}` format
 - **Structure** (`general-principles.md`) — Given-When-Then, `actual`/`expected` prefixes
-- **Java specifics** — JUnit 5 + Mockito + AssertJ; `@SpringBootTest` is FORBIDDEN in unit tests; use `ArgumentCaptor` over `any()` for DTOs
+- **Java specifics** — JUnit 5 + Mockito + AssertJ; `@SpringBootTest` is FORBIDDEN in unit tests; use `ArgumentCaptor` to verify DTO/model fields; use `any()` only for irrelevant arguments
 
 ## Contributing
 

@@ -31,6 +31,8 @@ You MUST invoke `/generate-test-cases` NOW before proceeding. Do NOT skip this s
 
 **CRITICAL: You MUST read and apply all relevant rules from the `./rules/tests/` directory:**
 
+> **Maintenance note:** General rules in `./rules/tests/general/` are shared with the `generate-test-cases` skill (which has copies in `rules/general/`). When updating rules, keep both locations in sync.
+
 ### General Rules (Always Apply)
 - `general/test-case-generation-strategy.md` - INCLUDE/EXCLUDE criteria
 - `general/naming-conventions.md` - Test naming format

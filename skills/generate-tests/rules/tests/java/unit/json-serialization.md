@@ -89,6 +89,10 @@ void fetchData_validResponse_parsesCorrectly() {
 }
 ```
 
+### Note on mockMvc Usage
+
+The `mockMvc` examples above apply to web layer tests (e.g., `@WebMvcTest` or standalone `MockMvcBuilders.standaloneSetup()`). These are distinct from `@SpringBootTest` — they only load the web layer, keeping tests fast. The JSON literal rule applies equally to both web layer tests and pure unit tests.
+
 ### Benefits
 
 1. **Readability** - Expected data is visible directly in test

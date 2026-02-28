@@ -192,8 +192,8 @@ Contributions are welcome via Pull Requests. All PRs require review and approval
 
 When adding new rules:
 
-1. Place general rules in `.claude/rules/tests/general/`
-2. Place language-specific rules in `.claude/rules/tests/{language}/`
+1. Place general rules in `skills/{skill-name}/rules/general/` (or `rules/tests/general/` for generate-tests)
+2. Place language-specific rules in `skills/generate-tests/rules/tests/{language}/unit/`
 3. Update skill files if new rules need explicit reference
 4. Ensure your changes follow the existing format and style
 
@@ -222,7 +222,7 @@ This repository uses branch protection rules:
 - [Testing on the Toilet: Cleanly Create Test Data](https://testing.googleblog.com/2018/02/testing-on-toilet-cleanly-create-test.html) - Feb 2018 — **IMPLEMENTED** — `cleanly-create-test-data.md`
 - [Testing on the Toilet: Only Verify State-Changing Method Calls](https://testing.googleblog.com/2017/12/testing-on-toilet-only-verify-state.html) - Dec 2017 — **NOT IMPLEMENTED** (HIGH) — don't verify query/getter methods
 - [Testing on the Toilet: Keep Cause and Effect Clear](https://testing.googleblog.com/2017/01/testing-on-toilet-keep-cause-and-effect.html) - Jan 2017 — **IMPLEMENTED** — `keep-cause-effect-clear.md`
-- [Testing on the Toilet: What Makes a Good End-to-End Test?](https://testing.googleblog.com/2016/09/testing-on-toilet-what-makes-good-end.html) - Sep 2016 — **IMPLEMENTED** — `what-makes-good-test.md`
+- [Testing on the Toilet: What Makes a Good End-to-End Test?](https://testing.googleblog.com/2016/09/testing-on-toilet-what-makes-good-end.html) - Sep 2016 — **PARTIALLY IMPLEMENTED** — `what-makes-good-test.md` (CCCR framework adapted from E2E post; fidelity and precision properties are not covered)
 - [Testing on the Toilet: Change-Detector Tests Considered Harmful](https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html) - Jan 2015 — **NOT IMPLEMENTED** (HIGH) — avoid tests that mirror production code
 - [Testing on the Toilet: Prefer Testing Public APIs Over Implementation-Detail Classes](https://testing.googleblog.com/2015/01/testing-on-toilet-prefer-testing-public.html) - Jan 2015 — **IMPLEMENTED** — `prefer-public-apis.md`
 - [Testing on the Toilet: Writing Descriptive Test Names](https://testing.googleblog.com/2014/10/testing-on-toilet-writing-descriptive.html) - Oct 2014 — **IMPLEMENTED** — `naming-conventions.md`

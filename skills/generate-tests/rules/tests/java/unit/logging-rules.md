@@ -85,11 +85,8 @@ class OrderServiceTest {
         cacheService.getData(key); // First call - cache miss
         cacheService.getData(key); // Second call - cache hit
 
-        // Then - verify method was called only once via log
-        long callCount = output.getOut().lines()
-                .filter(line -> line.contains("Loading from database"))
-                .count();
-        assertThat(callCount).isEqualTo(1);
+        // Then - verify log message appeared exactly once
+        assertThat(output.getOut()).containsOnlyOnce("Loading from database");
     }
 }
 ```
@@ -111,6 +108,14 @@ assertThat(output.getOut()).contains("expected message");
 assertThat(output.getOut()).doesNotContain("error");
 assertThat(output.getErr()).isEmpty();
 ```
+
+### Dependency Note
+
+`OutputCaptureExtension` and `CapturedOutput` come from the `spring-boot-test` dependency (`org.springframework.boot:spring-boot-test`). This extension does **NOT** start a Spring context — it only captures `System.out`/`System.err`, so it is fully compatible with unit tests (no `@SpringBootTest` needed).
+
+For non-Spring projects, use alternative approaches:
+- SLF4J's `ListAppender` to capture log events programmatically
+- JUnit 5's `@ExtendWith` with a custom extension that redirects stdout/stderr
 
 ### Use Cases
 

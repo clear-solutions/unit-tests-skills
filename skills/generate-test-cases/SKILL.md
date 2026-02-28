@@ -16,6 +16,8 @@ You will analyze code and generate a list of test cases that should be written f
 
 **CRITICAL: You MUST read and apply all rules from the following files before generating test cases:**
 
+> **Maintenance note:** General rules in `./rules/general/` are shared with the `generate-tests` skill (which has copies in `rules/tests/general/`). When updating rules, keep both locations in sync.
+
 ### General Rules (Always Apply)
 - `./rules/general/test-case-generation-strategy.md` - INCLUDE/EXCLUDE criteria for test cases
 - `./rules/general/naming-conventions.md` - Test naming format
@@ -24,6 +26,11 @@ You will analyze code and generate a list of test cases that should be written f
 - `./rules/general/keep-tests-focused.md` - One scenario per test
 - `./rules/general/test-behaviors-not-methods.md` - Separate tests for behaviors
 - `./rules/general/prefer-public-apis.md` - Test public APIs over private methods
+- `./rules/general/cleanly-create-test-data.md` - Use helpers and builders for test data
+- `./rules/general/keep-cause-effect-clear.md` - Effects follow causes immediately
+- `./rules/general/no-logic-in-tests.md` - KISS > DRY, avoid logic in assertions
+- `./rules/general/technology-stack-detection.md` - Detect language and framework
+- `./rules/general/verify-relevant-arguments-only.md` - Only verify relevant mock arguments
 
 ---
 
