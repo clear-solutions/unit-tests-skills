@@ -53,31 +53,30 @@ npx skills add clear-solutions/unit-tests-skills -a claude-code
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| Generate Test Cases | `/generate-test-cases <target>` | Analyze code and output a list of test cases with Given-When-Then format |
-| Generate Tests | `/generate-tests <target>` | Generate actual test code based on previously generated test cases |
+| Generate Tests | `/generate-tests <target>` | Full workflow: analyzes code, outputs test cases for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ). |
+| Generate Test Cases | `/generate-test-cases <target>` | Analysis only: outputs a structured list of test cases in Given-When-Then format without generating code. |
 
 ## Usage
 
-### Two-Step Process (Recommended)
+### Generate Tests (Primary Skill)
 
-1. **Generate test cases first:**
-   ```
-   /generate-test-cases src/services/OrderService.java
-   ```
-   This analyzes the code and outputs a structured list of test cases.
+```
+/generate-tests src/services/OrderService.java
+```
 
-2. **Generate test code:**
-   ```
-   /generate-tests src/services/OrderService.java
-   ```
-   This creates the actual test files based on the test cases.
+This single command handles the full workflow:
+1. Analyzes the source code and outputs a structured list of test cases
+2. Asks you to review the test cases before proceeding
+3. Generates the actual test files
+4. Verifies compilation
 
-### Why Two Steps?
+### Analyze Test Coverage Only
 
-- Ensures proper coverage based on INCLUDE/EXCLUDE rules
-- Prevents missing edge cases and error scenarios
-- Allows review of test strategy before writing code
-- Produces more focused, maintainable tests
+If you only want to see what test cases are needed without generating code:
+
+```
+/generate-test-cases src/services/OrderService.java
+```
 
 ## Testing Principles
 

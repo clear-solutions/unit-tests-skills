@@ -21,30 +21,20 @@ Then copy the content below into your `AGENTS.md`:
 
 ## Unit Test Generation
 
-This project uses unit test generation skills. Use the two-step approach for best results:
-
-1. `/generate-test-cases <file>` — Analyze code, output test case list
-2. `/generate-tests <file>` — Generate test code from cases
+This project uses unit test generation skills.
 
 ### Available Skills
 
 <available_skills>
   <skill>
-    <name>generate-test-cases</name>
-    <description>Analyzes source code and outputs a structured list of test cases in Given-When-Then format. Use this FIRST before generating actual test code.</description>
+    <name>generate-tests</name>
+    <description>Use when the user asks to generate, create, or write unit tests for code. Analyzes the target code, produces a structured test case list for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ).</description>
   </skill>
   <skill>
-    <name>generate-tests</name>
-    <description>Generates actual test code based on previously generated test cases. Follows strict testing principles: one scenario per test, no logic in tests, proper naming conventions.</description>
+    <name>generate-test-cases</name>
+    <description>Use when the user asks to analyze code for test coverage, list what test cases are needed, or review testing strategy — WITHOUT generating actual test code.</description>
   </skill>
 </available_skills>
-
-### Workflow
-
-When asked to "generate tests":
-1. Run `/generate-test-cases` first
-2. Review the test cases with the user
-3. Run `/generate-tests` to create actual test code
 
 ### Key Principles
 

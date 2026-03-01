@@ -27,18 +27,19 @@ templates/
 
 | Command | Purpose |
 |---------|---------|
-| `/generate-test-cases <target>` | Analyze code → output structured test case list (Given-When-Then) |
-| `/generate-tests <target>` | Generate test code from previously generated test cases |
+| `/generate-tests <target>` | Generate unit tests for code. Handles the full workflow: analyzes code, outputs test cases for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ). |
+| `/generate-test-cases <target>` | Analyze code for test coverage and list needed test cases — without generating actual test code. Use for analysis-only. |
 
 ## Workflow
 
-The two-step process is **mandatory** — always generate test cases before generating tests:
+`/generate-tests` is the primary skill — it handles the complete workflow internally:
 
-1. `/generate-test-cases <target>` — outputs test case list
-2. User reviews test cases
-3. `/generate-tests <target>` — generates test code
+1. Analyzes code and outputs a structured test case list
+2. Asks the user to review test cases before proceeding
+3. Generates test code
+4. Verifies compilation
 
-When a user asks to "generate tests", run `/generate-test-cases` first, then ask the user before proceeding to `/generate-tests`.
+`/generate-test-cases` is available separately for analysis-only use cases (e.g., reviewing test coverage strategy without generating code).
 
 ## Rules
 

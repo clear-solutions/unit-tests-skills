@@ -1,14 +1,12 @@
 ---
 name: generate-test-cases
-description: Analyze code and generate a structured list of test cases following battle-tested INCLUDE/EXCLUDE rules. Outputs Given-When-Then format covering all code branches. Use before writing actual tests.
+description: "Use when the user asks to analyze code for test coverage, list what test cases are needed, or review testing strategy — WITHOUT generating actual test code."
 allowed-tools: Read, Glob, Grep
 ---
 
 # Generate Test Cases Skill
 
-You will analyze code and generate a list of test cases that should be written for a given method/class.
-
-**IMPORTANT:** This command should be run BEFORE `/generate-tests` to ensure test cases follow the rules.
+You will analyze code and generate a list of test cases that should be written for a given method/class. This skill outputs test case descriptions only — it does NOT generate actual test code.
 
 ---
 
@@ -79,25 +77,4 @@ When this command is invoked, generate test cases for the specified target:
    - Security annotations (if present)
 4. Apply the INCLUDE/EXCLUDE rules strictly
 5. Output the list of test cases in the specified format
-6. Do NOT generate actual test code - only the test case descriptions
-
----
-
-## After Generating Test Cases
-
-**If the original user request was "generate tests" (not just "generate test cases"):**
-- After outputting test cases, use the **AskUserQuestion tool** to ask for permission:
-  ```
-  Question: "Test cases are ready. Proceed with generating test code?"
-  Header: "Next step"
-  Options:
-    - Label: "Yes, generate tests" / Description: "Proceed to run /generate-tests and create test files"
-    - Label: "No, stop here" / Description: "Review test cases first, generate tests later manually"
-  ```
-- If user selects "Yes", invoke `/generate-tests` with the same target
-- If user selects "No", STOP
-
-**If the original user request was only "generate test cases":**
-- After outputting test cases, add a helpful note at the end:
-  > "To generate actual test code from these test cases, run `/generate-tests <target>`"
-- Do NOT use AskUserQuestion - just provide the hint as text
+6. Do NOT generate actual test code — only the test case descriptions

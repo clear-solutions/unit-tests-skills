@@ -4,14 +4,14 @@ Guidance for AI agents working with this repository.
 
 ## Overview
 
-Skills for generating unit tests with consistent quality. Two-step process: analyze code first, then generate tests.
+Skills for generating unit tests with consistent quality. Each skill is self-contained.
 
 ## Skills
 
 | Command                       | What it does                          |
 |-------------------------------|---------------------------------------|
-| `/generate-test-cases <file>` | Analyzes code, outputs test case list |
-| `/generate-tests <file>`      | Generates test code from cases        |
+| `/generate-tests <file>`      | Full workflow: analyzes code, outputs test cases for review, generates test code |
+| `/generate-test-cases <file>` | Analysis only: outputs test case list without generating code |
 
 ## Rules Location
 
