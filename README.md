@@ -260,3 +260,6 @@ This repository uses branch protection rules:
 - [TotT: Stubs Speed up Your Unit Tests](https://testing.googleblog.com/2007/04/tott-stubs-speed-up-your-unit-tests.html) - Apr 2007
 - [TotT: Extracting Methods to Simplify Testing](https://testing.googleblog.com/2007/06/tott-extracting-methods-to-simplify.html) - Jun 2007
 
+## Guide to Building Skills for Claude
+[The Complete Guide to Building Skills for Claude](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf)
+
