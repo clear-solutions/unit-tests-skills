@@ -49,10 +49,15 @@ Key rule topics:
 - **INCLUDE/EXCLUDE criteria** (`test-case-generation-strategy.md`) — what to test vs. skip
 - **Naming** (`naming-conventions.md`) — `{method}_{state}_{outcome}` format
 - **Structure** (`general-principles.md`) — Given-When-Then, `actual`/`expected` prefixes
-- **Java specifics** — JUnit 5 + Mockito + AssertJ; `@SpringBootTest` is FORBIDDEN in unit tests; use `ArgumentCaptor` to verify DTO/model fields; use `any()` only for irrelevant arguments
+- **Existing test awareness** (`existing-test-awareness.md`) — check for existing tests before generating; match project conventions; avoid duplicates
+- **Code context analysis** (`code-context-analysis.md`) — read DTOs, entities, enums, and other dependency classes before writing tests
+- **Java specifics** — JUnit 5 + Mockito + AssertJ; `@SpringBootTest` is FORBIDDEN in unit tests; use `ArgumentCaptor` to verify DTO/model fields; use `any()` only for irrelevant arguments; `@WebMvcTest` for controllers (`controller-test-rules.md`)
+- **Post-generation verification** — compilation verification (`compilation-verification.md`) AND test execution verification (`test-execution-verification.md`) — tests must both compile and pass
 
 ## Contributing
 
 - Place general rules in `rules/general/` (or `rules/tests/general/` for generate-tests)
 - Place language-specific rules in `rules/tests/{language}/unit/`
+- **Keep general rules in sync**: General rules exist in TWO locations (`generate-test-cases/rules/general/` and `generate-tests/rules/tests/general/`). When adding or updating a general rule, copy the change to both directories
+- When adding a new rule, also add it to the Rules Reference list in the relevant `SKILL.md` file(s)
 - All changes require a PR with CODEOWNER approval; direct pushes to `main` are disabled
