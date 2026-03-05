@@ -2,6 +2,7 @@
 name: generate-tests
 description: "Use when the user asks to generate, create, or write unit tests for code. Analyzes the target code, produces a structured test case list for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ)."
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
+context: fork
 ---
 
 # Generate Tests Skill

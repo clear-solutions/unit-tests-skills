@@ -2,6 +2,7 @@
 name: generate-test-cases
 description: "Use when the user asks to analyze code for test coverage, list what test cases are needed, or review testing strategy — WITHOUT generating actual test code."
 allowed-tools: Read, Glob, Grep
+context: fork
 ---
 
 # Generate Test Cases Skill
