@@ -10,7 +10,7 @@ A collection of AI agent skills for generating high-quality unit tests. These sk
 
 ```bash
 # Install skills
-npx openskills install clear-solutions/unit-tests-skills
+npx openskills install mavka-ai/unit-tests-skills
 
 # Auto-generate/update AGENTS.md with installed skills
 npx openskills sync
@@ -21,20 +21,20 @@ npx openskills sync
 ### Option 2: Using npx skills
 
 ```bash
-npx skills add clear-solutions/unit-tests-skills
+npx skills add mavka-ai/unit-tests-skills
 ```
 
 Or install specific skills:
 
 ```bash
-npx skills add clear-solutions/unit-tests-skills --skill generate-test-cases
-npx skills add clear-solutions/unit-tests-skills --skill generate-tests
+npx skills add mavka-ai/unit-tests-skills --skill generate-test-cases
+npx skills add mavka-ai/unit-tests-skills --skill generate-tests
 ```
 
 For Claude Code specifically:
 
 ```bash
-npx skills add clear-solutions/unit-tests-skills -a claude-code
+npx skills add mavka-ai/unit-tests-skills -a claude-code
 ```
 
 **Important:** After installing with `npx skills`, manually add the snippet from [`templates/AGENTS-SNIPPET.md`](templates/AGENTS-SNIPPET.md) to your project's `AGENTS.md` file.
