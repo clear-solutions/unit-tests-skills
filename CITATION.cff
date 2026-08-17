@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: Unit Test Skills
+message: >-
+  If you use these skills in your work, please cite them
+  using the metadata from this file.
+type: software
+abstract: >-
+  A collection of AI agent skills for generating high-quality
+  unit tests, encoding battle-tested testing principles that
+  work across any programming language.
+authors:
+  - given-names: Maks
+    family-names: Danylenko
+    alias: MaksDanylenko
+    affiliation: Mavka AI
+  - given-names: Anastasiia
+    family-names: Mudra
+    alias: anesmy
+    affiliation: Mavka AI
+  - name: Mavka AI
+    website: 'https://mavka.ai/'
+repository-code: 'https://github.com/mavka-ai/unit-tests-skills'
+url: 'https://mavka.ai/'
+keywords:
+  - unit-testing
+  - ai-agents
+  - claude-code
+  - agent-skills
+  - test-generation
