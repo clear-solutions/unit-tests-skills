@@ -4,15 +4,27 @@
 
 The source code in this repository is licensed under the [MIT License](LICENSE).
 **The MIT License covers copyright only — it does not grant any rights to the
-Mavka AI name, logo, or other brand assets.** Trademark rights are separate from
-copyright, and this policy explains how the marks may and may not be used.
+Mavka name, the Mavka AI brand, or the Mavka AI logo.** Trademark rights are
+separate from copyright, and this policy explains how the marks may and may not
+be used.
 
 ## Marks Covered
 
-The following are trademarks of Mavka AI (the "Marks"):
+**Mavka**® is a registered European Union trade mark of
+**CLEAR-SOLUTIONS sp. z o.o.** (Plac Bankowy 2/1309, 00-095 Warszawa, Poland),
+which operates as Mavka AI:
 
-- **Mavka AI**™ and **Mavka**™ (word marks)
-- The Mavka AI logo and any stylized form of the above (design marks)
+| | |
+|---|---|
+| Mark | Mavka (word mark) |
+| Registration | EUTM No. 019310487 |
+| Registered | 16 May 2026 |
+| Filed | 30 January 2026 |
+| Registry | European Union Intellectual Property Office (EUIPO) |
+| Nice classes | 9, 41, 42 — including *software as a service*, *testing of computer software*, *quality testing*, and *computer aided testing services* |
+
+In addition, **Mavka AI**™ and the Mavka AI logo are used as unregistered marks
+of the same proprietor. Together these are referred to below as the "Marks".
 
 ## What the MIT License Allows
 
@@ -38,7 +50,7 @@ You do **not** need permission to:
 
 ## Uses That Require Written Permission
 
-You may **not**, without prior written permission from Mavka AI:
+You may **not**, without prior written permission from the proprietor:
 
 1. Use the Marks in the **name of your fork, product, service, or company** — or
    in a domain name, package name, npm scope, social media handle, or app store
@@ -46,9 +58,9 @@ You may **not**, without prior written permission from Mavka AI:
 2. Use the Marks, or anything confusingly similar to them, as **your own
    trademark or brand**.
 3. Use the Marks in a way that **implies endorsement, sponsorship, affiliation,
-   or certification** by Mavka AI where none exists.
-4. Use the **logo or other design marks** in modified form, or alter their
-   colors, proportions, or composition.
+   or certification** where none exists.
+4. Use the **logo** in modified form, or alter its colors, proportions, or
+   composition.
 5. Use the Marks in connection with content that is unlawful, or that would
    damage the reputation or goodwill associated with them.
 
@@ -68,18 +80,18 @@ not build the Marks into your own product's identity.
 ## Modified Versions
 
 If you distribute a modified version, make the modification clear so users are
-not misled about what they are running, and do not present it as the official
-Mavka AI release.
+not misled about what they are running, and do not present it as an official
+release.
 
 ## Reservation of Rights
 
-Mavka AI reserves all rights in the Marks not expressly granted here. This
-policy may be updated over time; the version in the `main` branch of this
-repository is the current one. Nothing in this policy limits the rights granted
-by the [MIT License](LICENSE), and nothing in the MIT License grants rights in
-the Marks.
+All rights in the Marks not expressly granted here are reserved. This policy may
+be updated over time; the version in the `main` branch of this repository is the
+current one. Nothing in this policy limits the rights granted by the
+[MIT License](LICENSE), and nothing in the MIT License grants rights in the
+Marks.
 
 ## Questions
 
-For permission requests or questions about this policy, contact Mavka AI via
+For permission requests or questions about this policy, contact us via
 <https://mavka.ai/>.
