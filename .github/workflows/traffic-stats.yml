@@ -50,9 +50,13 @@ jobs:
 
       - name: Fetch traffic data from the GitHub API
         env:
-          # A classic PAT with `repo` scope can be supplied as the TRAFFIC_TOKEN
-          # secret. Otherwise the job's own GITHUB_TOKEN is used, which works as
-          # long as the workflow keeps `contents: write`.
+          # The traffic endpoints are not reachable with GITHUB_TOKEN at all —
+          # it is a GitHub App installation token, and no `permissions:` block
+          # grants it access ("Resource not accessible by integration"). A PAT
+          # in the TRAFFIC_TOKEN secret is therefore required:
+          #   - fine-grained: Administration -> Read-only on this repository
+          #   - classic:      `repo` scope
+          # Only read access is needed here; the push below uses GITHUB_TOKEN.
           GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN || github.token }}
         run: |
           set -euo pipefail
@@ -62,8 +66,10 @@ jobs:
             local endpoint="$1" out="$2"
             if ! gh api -H "Accept: application/vnd.github+json" \
                  "repos/${GITHUB_REPOSITORY}/${endpoint}" > "${out}" 2>/tmp/traffic/err.txt; then
-              echo "::error::Failed to read ${endpoint}. The traffic API requires push access."
-              echo "::error::If this is a 403, add a classic PAT with 'repo' scope as the TRAFFIC_TOKEN secret."
+              echo "::error::Failed to read ${endpoint}."
+              echo "::error::403 'not accessible by integration' -> GITHUB_TOKEN can never read traffic; set the TRAFFIC_TOKEN secret."
+              echo "::error::403 'not accessible by personal access token' -> TRAFFIC_TOKEN lacks Administration: Read-only on this repository."
+              echo "::error::Fine-grained PATs also need org approval when the organisation requires it."
               cat /tmp/traffic/err.txt >&2
               return 1
             fi
