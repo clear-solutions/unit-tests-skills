@@ -214,6 +214,20 @@ This repository uses branch protection rules:
 - PRs require at least one approval from CODEOWNERS
 - Status checks must pass before merging
 
+## License
+
+Released under the [MIT License](LICENSE) — free to use, modify, and embed in
+commercial and closed-source projects, provided the copyright notice is retained.
+
+## Trademark
+
+The MIT License covers copyright only. **Mavka**® is a registered European Union
+trade mark (EUTM No. 019310487) of CLEAR-SOLUTIONS sp. z o.o., which operates as
+Mavka AI; **Mavka AI**™ and the Mavka AI logo are used as unregistered marks. The
+marks are not licensed with the code. Referring to the project by name is fine;
+using them in your own product or fork's name is not. See
+[TRADEMARK.md](TRADEMARK.md) for the full policy.
+
 ## Google's unit tests best practices
 
 > **Legend:** Implemented = rule file exists in skills | Not implemented = no rule file yet

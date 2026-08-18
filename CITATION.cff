@@ -19,6 +19,7 @@ authors:
     affiliation: Mavka AI
   - name: Mavka AI
     website: 'https://mavka.ai/'
+license: MIT
 repository-code: 'https://github.com/mavka-ai/unit-tests-skills'
 url: 'https://mavka.ai/'
 keywords:
