@@ -1,0 +1,34 @@
+{
+  "name": "mavka",
+  "description": "Skills from Mavka for writing and maintaining high-quality tests with AI coding agents.",
+  "owner": {
+    "name": "Mavka",
+    "url": "https://mavka.ai/"
+  },
+  "plugins": [
+    {
+      "name": "unit-tests-skills",
+      "source": "./",
+      "displayName": "Unit Test Skills",
+      "description": "Generate high-quality unit tests. Analyzes code, produces a reviewable Given-When-Then test case list, then writes the tests and verifies they compile and pass. Java support covers JUnit 5, Mockito, and AssertJ.",
+      "author": {
+        "name": "Mavka",
+        "url": "https://mavka.ai/"
+      },
+      "homepage": "https://mavka.ai/",
+      "repository": "https://github.com/mavka-ai/unit-tests-skills",
+      "license": "MIT",
+      "category": "testing",
+      "keywords": [
+        "unit-testing",
+        "test-generation",
+        "tdd",
+        "java",
+        "junit5",
+        "mockito",
+        "assertj",
+        "code-quality"
+      ]
+    }
+  ]
+}
