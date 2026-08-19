@@ -78,12 +78,20 @@ npx skills add mavka-ai/unit-tests-skills -a claude-code
 
 ## Available Skills
 
-| Skill | Command | Description |
-|-------|---------|-------------|
-| Generate Tests | `/generate-tests <target>` | Full workflow: analyzes code, outputs test cases for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ). |
-| Generate Test Cases | `/generate-test-cases <target>` | Analysis only: outputs a structured list of test cases in Given-When-Then format without generating code. |
+| Skill | Command | Plugin command | Description |
+|-------|---------|----------------|-------------|
+| Generate Tests | `/generate-tests <target>` | `/unit-tests-skills:generate-tests <target>` | Full workflow: analyzes code, outputs test cases for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ). |
+| Generate Test Cases | `/generate-test-cases <target>` | `/unit-tests-skills:generate-test-cases <target>` | Analysis only: outputs a structured list of test cases in Given-When-Then format without generating code. |
+
+Claude Code namespaces plugin skills by plugin name, so the command depends on
+how you installed. Use the **Plugin command** after
+[Option 1](#option-1-claude-code-plugin-recommended-for-claude-code); use the
+plain **Command** after openskills or `npx skills`.
 
 ## Usage
+
+> Examples below use the plain command form. If you installed as a plugin,
+> prefix the skill name with the plugin: `/unit-tests-skills:generate-tests`.
 
 ### Generate Tests (Primary Skill)
 
