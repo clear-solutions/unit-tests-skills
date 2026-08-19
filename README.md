@@ -1,18 +1,24 @@
-# Unit Test Skills
+<div align="center">
+<br/>
 
-A collection of AI agent skills for generating high-quality unit tests. These skills encode battle-tested testing principles that work across any programming language.
+<a href="https://mavka.ai/">
+  <img src="assets/mavka-ai-logo.svg" alt="Mavka AI" width="320" />
+</a>
 
----
+### AI agent skills for generating high-quality unit tests
 
-## About Mavka AI
+[Website](https://mavka.ai/)
 
-[Mavka AI](https://mavka.ai/) is the digital engineering company behind these skills. We help growing tech businesses eliminate architectural debt and accelerate development with AI — through codebase and infrastructure audits, technical debt remediation and system modernization, and knowledge transfer to client teams — so engineering stops being your bottleneck. Our work has delivered results like 40% lower cloud costs, 80% technical debt elimination, and rescuing stalled products without a rewrite.
+</div>
 
-Curious how much technical debt is quietly slowing your team down? Find out at [mavka.ai](https://mavka.ai/).
 
----
+[Mavka AI](https://mavka.ai/) is the digital engineering company behind these skills. We help growing tech businesses eliminate architectural debt and accelerate development with AI — through codebase and infrastructure audits, technical debt remediation and system modernization, and knowledge transfer to client teams — so engineering stops being your bottleneck.
+
+> Curious how much technical debt is quietly slowing your team down? Find out at [mavka.ai](https://mavka.ai/).
 
 ## Installation
+
+**unit-tests-skills** is a collection of AI agent skills for generating high-quality unit tests. These skills encode battle-tested testing principles that work across any programming language.
 
 ### Option 1: Using openskills (Recommended)
 
