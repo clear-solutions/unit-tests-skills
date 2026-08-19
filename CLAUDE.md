@@ -54,6 +54,32 @@ Key rule topics:
 - **Java specifics** — JUnit 5 + Mockito + AssertJ; `@SpringBootTest` is FORBIDDEN in unit tests; use `ArgumentCaptor` to verify DTO/model fields; use `any()` only for irrelevant arguments; `@WebMvcTest` for controllers (`controller-test-rules.md`)
 - **Post-generation verification** — compilation verification (`compilation-verification.md`) AND test execution verification (`test-execution-verification.md`) — tests must both compile and pass
 
+## Plugin Distribution
+
+This repository is also a Claude Code plugin and marketplace, declared in
+`.claude-plugin/`. Users install it with:
+
+```
+/plugin marketplace add mavka-ai/unit-tests-skills
+/plugin install unit-tests-skills@mavka
+```
+
+**Any change to `.claude-plugin/` or `skills/` must be validated before pushing:**
+
+```bash
+./scripts/validate-plugin.sh
+```
+
+CI enforces this on every PR touching those paths, and the community-marketplace
+review pipeline runs the same `claude plugin validate` check — a failure here is
+a rejected submission there.
+
+Three non-obvious rules apply: validating the repo root does not validate
+`plugin.json`, a mismatched entry name passes validation but breaks installs,
+and `version` belongs in `plugin.json` only. See
+[AGENTS.md](AGENTS.md#plugin-validation) for the reasoning behind each — that
+file is the single source of truth; do not duplicate its detail here.
+
 ## Contributing
 
 - Place general rules in `rules/general/` (or `rules/tests/general/` for generate-tests)

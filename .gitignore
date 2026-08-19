@@ -34,3 +34,5 @@ build/
 
 mvnw*
 .mvn/
+### Runtime logs ###
+logs/

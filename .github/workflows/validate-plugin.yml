@@ -1,0 +1,48 @@
+name: Validate Plugin
+
+# The community-marketplace review pipeline runs `claude plugin validate` on
+# every submission, so this catches a rejection before it happens rather than
+# after. Validation is local and needs no credentials.
+
+on:
+  pull_request:
+    paths:
+      - '.claude-plugin/**'
+      - 'skills/**'
+      - 'scripts/validate-plugin.sh'
+      - '.github/workflows/validate-plugin.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.claude-plugin/**'
+      - 'skills/**'
+      - 'scripts/validate-plugin.sh'
+      - '.github/workflows/validate-plugin.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: claude plugin validate --strict
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Claude Code CLI
+        # Deliberately unpinned. The review pipeline validates against whatever
+        # version is current, so pinning here would let this job pass while a
+        # submission fails on a check added upstream. The cost is that a new
+        # release can break this job — which is the signal we want.
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Validate plugin and marketplace manifests
+        run: ./scripts/validate-plugin.sh

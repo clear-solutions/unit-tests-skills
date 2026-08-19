@@ -11,7 +11,6 @@
       "source": "./",
       "displayName": "Unit Test Skills",
       "description": "Generate high-quality unit tests. Analyzes code, produces a reviewable Given-When-Then test case list, then writes the tests and verifies they compile and pass. Java support covers JUnit 5, Mockito, and AssertJ.",
-      "version": "1.0.0",
       "author": {
         "name": "Mavka",
         "url": "https://mavka.ai/"

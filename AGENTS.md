@@ -20,6 +20,40 @@ Rules are inside each skill folder:
 - `generate-test-cases/rules/general/` — general rules only
 - `generate-tests/rules/tests/` — all rules (general, java, post-generation)
 
+## Plugin Validation
+
+This repository doubles as a Claude Code plugin **and** a marketplace, declared
+in `.claude-plugin/`. Both manifests must stay valid, because the
+community-marketplace review pipeline runs `claude plugin validate` on every
+submission.
+
+**After changing anything under `.claude-plugin/` or `skills/`, run:**
+
+```bash
+./scripts/validate-plugin.sh
+```
+
+CI runs the same script on every pull request touching those paths
+(`.github/workflows/validate-plugin.yml`). No credentials are needed —
+validation is entirely local.
+
+### What it checks, and why each check exists
+
+| Check | Why it is not redundant |
+|---|---|
+| `claude plugin validate . --strict` | Validates the marketplace manifest. `--strict` promotes warnings to errors, which matters because the CLI reports a `version` that disagrees between the entry and `plugin.json` as a *warning* — while `plugin.json` silently wins at install time. |
+| `claude plugin validate <copy> --strict` | The validator switches to marketplace mode the moment it sees `marketplace.json`, so validating the repo root **never** exercises `plugin.json`'s own schema. The script copies the plugin without the marketplace file to force plugin mode. |
+| Entry name matches `plugin.json` | The CLI does **not** check this. A marketplace entry naming a plugin that `plugin.json` does not define validates cleanly and only fails later at install time with `Plugin "<name>" not found in marketplace`. Verified against claude 2.1.235. |
+
+### Conventions that follow from this
+
+- Declare `version` in `plugin.json` **only**. Repeating it in the marketplace
+  entry adds a way for the two to drift, and the entry's copy is ignored.
+- The plugin `name` is immutable once published — it is the install id and the
+  skill namespace (`/unit-tests-skills:generate-tests`). Do not rename it.
+- Keep `skills/` at the repository root. Only `plugin.json` and
+  `marketplace.json` belong inside `.claude-plugin/`.
+
 ## Creating a New Skill
 
 ### Directory Structure
