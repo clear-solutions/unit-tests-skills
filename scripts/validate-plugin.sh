@@ -28,7 +28,17 @@ command -v claude >/dev/null 2>&1 \
 command -v jq >/dev/null 2>&1 \
   || { echo "✘ jq not found"; exit 1; }
 
-echo "claude $(claude --version)"
+# A global npm install can leave the native binary missing when postinstall is
+# skipped (--ignore-scripts, --omit=optional, some pnpm configs). The CLI is then
+# on PATH but every invocation errors, so check it is runnable before trusting it.
+if ! CLAUDE_VERSION="$(claude --version 2>&1)"; then
+  echo "✘ claude is on PATH but not runnable:"
+  printf '%s\n' "${CLAUDE_VERSION}" | sed 's/^/    /'
+  echo "  Complete the install with:"
+  echo "    node \"\$(npm root -g)/@anthropic-ai/claude-code/install.cjs\""
+  exit 1
+fi
+echo "claude ${CLAUDE_VERSION}"
 echo
 
 # --- 1. Marketplace manifest -------------------------------------------------

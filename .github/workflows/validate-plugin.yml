@@ -44,5 +44,11 @@ jobs:
         # release can break this job — which is the signal we want.
         run: npm install -g @anthropic-ai/claude-code
 
+      - name: Verify the CLI is runnable
+        # A global npm install can leave the native binary missing when
+        # postinstall is skipped. Surface that as its own failed step rather
+        # than as a confusing error inside validation.
+        run: claude --version
+
       - name: Validate plugin and marketplace manifests
         run: ./scripts/validate-plugin.sh
