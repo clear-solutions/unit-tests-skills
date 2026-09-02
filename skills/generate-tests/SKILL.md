@@ -1,6 +1,6 @@
 ---
 name: generate-tests
-description: "Use when the user asks to generate, create, or write unit tests for code. Analyzes the target code, produces a structured test case list for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ)."
+description: "Use when the user asks to generate, create, or write unit tests for code. Analyzes the target code, produces a structured test case list for review, then generates test code. Supports Java (JUnit 5, Mockito, AssertJ), including integration tests for repositories, messaging, HTTP clients and configuration properties."
 allowed-tools: Read, Write, Glob, Grep, Bash, AskUserQuestion
 context: fork
 ---
@@ -84,8 +84,11 @@ Options:
 1. Determine code type and apply the matching rules:
    - **Controller** → Apply `controller-test-rules.md` (use `@WebMvcTest`, MockMvc patterns)
    - **Service / Domain logic** → Apply `domain-service-rules.md` (use `@ExtendWith(MockitoExtension.class)`, Mockito patterns)
-   - **Repository / Messaging / Other types** → Apply `domain-service-rules.md` as baseline; inform the user that type-specific rules are not yet available
+   - **Repository / Messaging / External HTTP client / `@ConfigurationProperties`** → These are tested against real infrastructure, not mocks. Apply the matching rule from `java/integration/` (see Rules Reference) and tell the user the generated test is an integration test, not a unit test
+   - **Other types** → Apply `domain-service-rules.md` as baseline; inform the user that type-specific rules are not yet available
    - **All Java code** → Always apply `java-test-template.md`, `argument-matching.md`, `json-serialization.md` regardless of code type
+
+   The `@SpringBootTest` ban in `java-test-template.md` applies to unit tests. Integration rules that call for `@SpringBootTest` or Testcontainers override it for the test types they cover.
 2. If an existing test class was found in Step 1, add new test methods to it (do not create a duplicate file)
 3. Generate tests following all rules and the test cases from Step 2
 4. Create or update the test file using the Write tool
@@ -180,6 +183,17 @@ Result: Complete test file delivered with 7 passing tests.
 - `java/unit/logging-rules.md` - OutputCaptureExtension for logs
 - `java/unit/domain-service-rules.md` - Mockito patterns for services
 - `java/unit/controller-test-rules.md` - @WebMvcTest and MockMvc patterns for controllers
+
+### Java Integration Tests (apply only for the code type each one names)
+- `java/integration/jpa-repository-rules.md` - @DataJpaTest with a real database via Testcontainers
+- `java/integration/external-http-wiremock.md` - WireMock for HTTP clients, instead of mocking the client
+- `java/integration/kafka-consumer-rules.md` - Kafka consumers with @EmbeddedKafka or Testcontainers
+- `java/integration/kafka-producer-rules.md` - Kafka producers verified through a real consumer
+- `java/integration/rabbitmq-rules.md` - RabbitMQ producers and consumers with RabbitMQContainer
+- `java/integration/redis-pubsub-rules.md` - Redis Pub/Sub messaging
+- `java/integration/redis-cache-rules.md` - Spring Cache backed by Redis
+- `java/integration/aws-rules.md` - S3, DynamoDB and SQS via LocalStack
+- `java/integration/configuration-properties-rules.md` - @ConfigurationProperties binding and validation
 
 ### Post-Generation
 - `post-generation/compilation-verification.md` - Verify compilation

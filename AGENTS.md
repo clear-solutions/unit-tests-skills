@@ -18,7 +18,7 @@ Skills for generating unit tests with consistent quality. Each skill is self-con
 Rules are inside each skill folder:
 
 - `generate-test-cases/rules/general/` — general rules only
-- `generate-tests/rules/tests/` — all rules (general, java, post-generation)
+- `generate-tests/rules/tests/` — all rules (general, java unit and integration, post-generation)
 
 ## Plugin Validation
 
@@ -106,6 +106,8 @@ skills/{skill-name}/rules/
   general/
     {rule-name}.md
   {language}/unit/
+    {rule-name}.md
+  {language}/integration/
     {rule-name}.md
 ```
 

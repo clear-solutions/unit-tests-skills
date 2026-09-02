@@ -18,6 +18,7 @@ skills/
     rules/tests/
       general/            # General testing rules (superset of generate-test-cases rules)
       java/unit/          # Java-specific rules (JUnit 5, Mockito, AssertJ)
+      java/integration/   # Integration rules (Testcontainers, WireMock, LocalStack)
       post-generation/    # Compilation verification rules
 templates/
   AGENTS-SNIPPET.md       # Template users copy into their project's AGENTS.md
@@ -83,7 +84,7 @@ file is the single source of truth; do not duplicate its detail here.
 ## Contributing
 
 - Place general rules in `rules/general/` (or `rules/tests/general/` for generate-tests)
-- Place language-specific rules in `rules/tests/{language}/unit/`
+- Place language-specific rules in `rules/tests/{language}/unit/`, or `rules/tests/{language}/integration/` when the rule needs real infrastructure (a container, a stub server) rather than mocks
 - **Keep general rules in sync**: General rules exist in TWO locations (`generate-test-cases/rules/general/` and `generate-tests/rules/tests/general/`). When adding or updating a general rule, copy the change to both directories
 - When adding a new rule, also add it to the Rules Reference list in the relevant `SKILL.md` file(s)
 - All changes require a PR with CODEOWNER approval; direct pushes to `main` are disabled
